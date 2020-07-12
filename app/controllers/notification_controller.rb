@@ -1,5 +1,6 @@
-class NotificationController < ApplicationController skip_before_filter :authenticate_user!, :only => :create
-  protect_from_forgery
+class NotificationController < ApplicationController 
+	skip_before_action :authenticate_user!, :only => :create
+ 	protect_from_forgery
   
   def create
     transaction = PagSeguro::Transaction.find_by_notification_code(params[:notificationCode])
