@@ -1,8 +1,8 @@
-<h4>Orders list:</h4>
+<h4>Lista de Pedidos na Loja:</h4>
 <br />
 <% @orders.each do |order| %>
-  <p>Product Name: <%= order.product.title %></p>
-  <p>User: <%= order.buyer_name %></p>
+  <p>Produto: <%= order.product.title %></p>
+  <p>Comprador: <%= order.buyer_name %></p>
   <p>Status: <%= order.status %></p>
   <hr />
 <% end %>
