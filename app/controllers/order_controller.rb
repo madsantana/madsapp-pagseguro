@@ -17,7 +17,7 @@ class OrderController < ApplicationController
  
     # Aqui vão os itens que serão cobrados na transação, caso você tenha multiplos itens
     # em um carrinho altere aqui para incluir sua lista de itens
-    payment.items << { id: @product.id, description: @product.description, amount: @product.price, weight: 0 } # Criando uma referencia para a nossa ORDER reference = "REF_#{(0...8).map { (65 + rand(26)).chr }.join}_#{@product.id}" payment.reference = reference payment.sender = { hash: params[:sender_hash], name: params[:name], email: params[:email] } payment.credit_card_token = params[:card_token] payment.holder = { name: params[:card_name], birth_date: params[:birthday], document: { type: "CPF", value: params[:cpf] }, phone: { area_code: params[:phone_code], number: params[:phone_number] } } payment.installment = { value: @product.price, quantity: 1 } puts "=> REQUEST"
+    payment.items << { id: @product.id, description: @product.desciption, amount: @product.price, weight: 0 } # Criando uma referencia para a nossa ORDER reference = "REF_#{(0...8).map { (65 + rand(26)).chr }.join}_#{@product.id}" payment.reference = reference payment.sender = { hash: params[:sender_hash], name: params[:name], email: params[:email] } payment.credit_card_token = params[:card_token] payment.holder = { name: params[:card_name], birth_date: params[:birthday], document: { type: "CPF", value: params[:cpf] }, phone: { area_code: params[:phone_code], number: params[:phone_number] } } payment.installment = { value: @product.price, quantity: 1 } puts "=> REQUEST"
     puts PagSeguro::TransactionRequest::RequestSerializer.new(payment).to_params
     puts
  
