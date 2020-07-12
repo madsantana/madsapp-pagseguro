@@ -21,7 +21,8 @@ class OrderController < ApplicationController
     
     # Criando uma referencia para a nossa ORDER 
    reference = "REF_#{(0...8).map { (65 + rand(26)).chr }.join}_#{@product.id}" 
-   payment.reference = reference payment.sender = { hash: params[:sender_hash], name: params[:name], email: params[:email] } 
+   payment.reference = reference 
+   payment.sender = { hash: params[:sender_hash], name: params[:name], email: params[:email] } 
    payment.credit_card_token = params[:card_token] 
    payment.holder = { name: params[:card_name], birth_date: params[:birthday], document: { type: "CPF", value: params[:cpf] }, phone: { area_code: params[:phone_code], number: params[:phone_number] } } 
    payment.installment = { value: @product.price, quantity: 1 } 
