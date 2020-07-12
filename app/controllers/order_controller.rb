@@ -24,7 +24,8 @@ class OrderController < ApplicationController
    payment.reference = reference payment.sender = { hash: params[:sender_hash], name: params[:name], email: params[:email] } 
    payment.credit_card_token = params[:card_token] 
    payment.holder = { name: params[:card_name], birth_date: params[:birthday], document: { type: "CPF", value: params[:cpf] }, phone: { area_code: params[:phone_code], number: params[:phone_number] } } 
-   payment.installment = { value: @product.price, quantity: 1 } puts "=> REQUEST"
+   payment.installment = { value: @product.price, quantity: 1 } 
+   puts "=> REQUEST"
    puts PagSeguro::TransactionRequest::RequestSerializer.new(payment).to_params
    puts
  
