@@ -1,5 +1,5 @@
 class OrderController < ApplicationController
-  protect_from_forgery with: :exception, prepend: true
+  protect_from_forgery
  
   # Gerar um Token de sessão para nosso pagamento
   def new
